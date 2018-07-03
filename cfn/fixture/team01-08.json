@@ -1,0 +1,292 @@
+{
+    "team-organizer-EventTable-************": [
+        {
+            "PutRequest": {
+                "Item": {
+                    "Id": {
+                        "S": "team-01-facilitator"
+                    },
+                    "Status": {
+                        "S": "empty"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "Id": {
+                        "S": "team-01-creator"
+                    },
+                    "Status": {
+                        "S": "empty"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "Id": {
+                        "S": "team-01-sales"
+                    },
+                    "Status": {
+                        "S": "empty"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "Id": {
+                        "S": "team-02-facilitator"
+                    },
+                    "Status": {
+                        "S": "empty"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "Id": {
+                        "S": "team-02-creator"
+                    },
+                    "Status": {
+                        "S": "empty"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "Id": {
+                        "S": "team-02-sales"
+                    },
+                    "Status": {
+                        "S": "empty"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "Id": {
+                        "S": "team-03-facilitator"
+                    },
+                    "Status": {
+                        "S": "empty"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "Id": {
+                        "S": "team-03-creator"
+                    },
+                    "Status": {
+                        "S": "empty"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "Id": {
+                        "S": "team-03-sales"
+                    },
+                    "Status": {
+                        "S": "empty"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "Id": {
+                        "S": "team-04-facilitator"
+                    },
+                    "Status": {
+                        "S": "empty"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "Id": {
+                        "S": "team-04-creator"
+                    },
+                    "Status": {
+                        "S": "empty"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "Id": {
+                        "S": "team-04-sales"
+                    },
+                    "Status": {
+                        "S": "empty"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "Id": {
+                        "S": "team-05-facilitator"
+                    },
+                    "Status": {
+                        "S": "empty"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "Id": {
+                        "S": "team-05-creator"
+                    },
+                    "Status": {
+                        "S": "empty"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "Id": {
+                        "S": "team-05-sales"
+                    },
+                    "Status": {
+                        "S": "empty"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "Id": {
+                        "S": "team-06-facilitator"
+                    },
+                    "Status": {
+                        "S": "empty"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "Id": {
+                        "S": "team-06-creator"
+                    },
+                    "Status": {
+                        "S": "empty"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "Id": {
+                        "S": "team-06-sales"
+                    },
+                    "Status": {
+                        "S": "empty"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "Id": {
+                        "S": "team-07-facilitator"
+                    },
+                    "Status": {
+                        "S": "empty"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "Id": {
+                        "S": "team-07-creator"
+                    },
+                    "Status": {
+                        "S": "empty"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "Id": {
+                        "S": "team-07-sales"
+                    },
+                    "Status": {
+                        "S": "empty"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "Id": {
+                        "S": "team-08-facilitator"
+                    },
+                    "Status": {
+                        "S": "empty"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "Id": {
+                        "S": "team-08-creator"
+                    },
+                    "Status": {
+                        "S": "empty"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "Id": {
+                        "S": "team-08-sales"
+                    },
+                    "Status": {
+                        "S": "empty"
+                    }
+                }
+            }
+        }
+    ]
+}

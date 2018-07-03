@@ -1,0 +1,25 @@
+body {
+  font-family: Lato, "Noto Sans JP", "游ゴシック Medium", "游ゴシック体", "Yu Gothic Medium", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+#contents {
+  width: 100%;
+  display: flex;
+	align-items: center;
+  justify-content: center;
+}
+
+#team-organizer {
+	text-align: center;
+}
+
+#team-id-div {
+  font-size: 3em;
+}
+
+.role-image {
+  display: none;
+  text-align: center;
+  padding-left: auto;
+  padding-right: auto;
+}

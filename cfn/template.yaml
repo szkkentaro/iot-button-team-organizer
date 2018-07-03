@@ -1,0 +1,135 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+    team organizer
+    
+Globals:
+    Function:
+        Timeout: 5
+        Runtime: nodejs8.10
+        Handler: index.handler
+
+Parameters:
+    IoTEndpoint:
+        Type: String
+    IoTTopicName:
+        Type: String
+        Default: team-organizer
+
+Resources:
+    # S3 for Static website hosting
+    StaticSiteBucket:
+        Type: AWS::S3::Bucket
+        Properties:
+            AccessControl : PublicRead
+            CorsConfiguration:
+                CorsRules:
+                -
+                    AllowedHeaders:
+                        - '*'
+                    AllowedOrigins:
+                        - '*'
+                    AllowedMethods: 
+                        - GET
+            WebsiteConfiguration:
+                IndexDocument: index.html
+
+    StaticSiteBucketPolicy:
+        Type: "AWS::S3::BucketPolicy"
+        Properties: 
+            Bucket: !Ref StaticSiteBucket
+            PolicyDocument:
+                Statement: 
+                    - 
+                        Action: s3:GetObject
+                        Effect: Allow
+                        Resource: !Sub arn:aws:s3:::${StaticSiteBucket}/*
+                        Principal: '*'
+
+    # Cognito for IoT certificate
+    CognitoIDPool:
+        Type: AWS::Cognito::IdentityPool
+        Properties:
+            AllowUnauthenticatedIdentities: true
+
+    CognitoIDPoolRoleAttachment:
+        Type: AWS::Cognito::IdentityPoolRoleAttachment
+        Properties:
+            IdentityPoolId: !Ref CognitoIDPool 
+            Roles:
+                authenticated: !GetAtt CognitoIDPoolRole.Arn
+                unauthenticated: !GetAtt CognitoIDPoolRole.Arn
+
+    CognitoIDPoolRole:
+        Type: AWS::IAM::Role
+        Properties:
+            AssumeRolePolicyDocument: 
+                Version: '2012-10-17'
+                Statement:
+                    -
+                        Effect: Allow
+                        Principal: 
+                            Federated: cognito-identity.amazonaws.com
+                        Action: sts:AssumeRoleWithWebIdentity
+                        Condition:
+                            StringEquals: 
+                                "cognito-identity.amazonaws.com:aud": !Ref CognitoIDPool
+            ManagedPolicyArns:
+                - arn:aws:iam::aws:policy/AWSIoTDataAccess
+                - arn:aws:iam::aws:policy/AmazonDynamoDBReadOnlyAccess
+
+    # Lambda functions
+    RelayFunction:
+        Type: AWS::Serverless::Function
+        Properties:
+            CodeUri: src/relay
+            Policies: 
+                - AWSIoTDataAccess
+            Environment:
+                Variables:
+                    IOT_ENDPOINT: !Ref IoTEndpoint
+                    IOT_TOPIC_NAME: !Ref IoTTopicName
+            Events:
+                DynamoDBStream:
+                    Type: DynamoDB
+                    Properties:
+                        Stream: !GetAtt EventTable.StreamArn
+                        StartingPosition: TRIM_HORIZON
+                        BatchSize: 10
+
+    GatewayFunction:
+        Type: AWS::Serverless::Function
+        Properties:
+            CodeUri: src/gateway
+            Policies: 
+                - DynamoDBCrudPolicy:
+                    TableName: !Ref EventTable
+            Environment:
+                Variables:
+                    DYNAMODB_TABLE: !Ref EventTable
+
+    # DynamoDB for team organize storage
+    EventTable:
+        Type: AWS::DynamoDB::Table
+        Properties:
+            KeySchema:
+                -
+                    AttributeName: Id
+                    KeyType: HASH
+            AttributeDefinitions:
+                -
+                    AttributeName: Id
+                    AttributeType: S
+            ProvisionedThroughput:
+                ReadCapacityUnits: 5
+                WriteCapacityUnits: 5
+            StreamSpecification:
+                StreamViewType: NEW_IMAGE
+
+Outputs:
+
+    StaticSiteBucket:
+      Value: !Ref StaticSiteBucket
+
+    StaticSiteEndpoint:
+      Value: !Sub https://${StaticSiteBucket}.s3-${AWS::Region}.amazonaws.com/index.html

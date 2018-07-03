@@ -1,0 +1,52 @@
+{
+    "team-organizer-EventTable-************": [
+        {
+            "PutRequest": {
+                "Item": {
+                    "Id": {
+                        "S": "team-09-facilitator"
+                    },
+                    "Status": {
+                        "S": "empty"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "Id": {
+                        "S": "team-09-creator"
+                    },
+                    "Status": {
+                        "S": "empty"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "Id": {
+                        "S": "team-09-sales"
+                    },
+                    "Status": {
+                        "S": "empty"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "Id": {
+                        "S": "team-00-winner"
+                    },
+                    "Status": {
+                        "S": "empty"
+                    }
+                }
+            }
+        }
+    ]
+}
